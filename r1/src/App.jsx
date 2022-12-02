@@ -11,22 +11,15 @@ export default function App() {
                     console.log(result);
                     setJokes(result.jokes);
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
                 (error) => {}
             );
     }, []);
     return (
         <div className="App">
             <div className="App-header ">
-
-
-                    {jokes?.map((item) => (
-                        <Joke key={item.id} joke={item} />
-                    ))}
- 
-             
+                {jokes?.map((item) => (
+                    <Joke key={item.id} joke={item} />
+                ))}
             </div>
         </div>
     );

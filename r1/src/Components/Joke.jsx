@@ -1,4 +1,3 @@
-
 function Joke({ joke }) {
     return (
         <div
@@ -6,10 +5,10 @@ function Joke({ joke }) {
                 letterSpacing: '2px',
                 fontSize: '12px',
                 backgroundColor: '#282c34',
-                color:"white",
-                textAlign: "initial",
-                padding: "20px",
-                marginRight: "8%",
+                color: 'white',
+                textAlign: 'initial',
+                padding: '20px',
+                marginRight: '8%',
             }}
         >
             <ul>
