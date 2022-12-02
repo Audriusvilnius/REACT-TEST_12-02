@@ -1,38 +1,33 @@
-import './App.scss';
-import { useState } from 'react';
-import { useEffect } from 'react';
-// import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Joke from './Components/Joke';
 
-function App() {
+export default function App() {
+    const [jokes, setJokes] = useState(null);
+    useEffect(() => {
+        fetch('https://v2.jokeapi.dev/joke/Programming?amount=10')
+            .then((res) => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    setJokes(result.jokes);
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {}
+            );
+    }, []);
+    return (
+        <div className="App">
+            <div className="App-header ">
 
-const [jokes, setJoke] = useState(null);
 
-useEffect(() => {
-    // axios
-    //     .get('https://in3.dev/knygos/')
-    //     .get('https://v2.jokeapi.dev/joke/Programming?amount=10')
-    //     .then((res) => setJoke(res.data.map((b) => ({ ...b, show: true }))));
+                    {jokes?.map((item) => (
+                        <Joke key={item.id} joke={item} />
+                    ))}
  
- fetch('https://v2.jokeapi.dev/joke/Programming?amount=10')
-     .then((response) => response.json())
-     .then((res) => setJoke(res.data.map((b) => ({ ...b, show: true }))));
-         
-}, []);
-
-return (
-    <div className="App">
-        <div className="App-header">
-            <ul>
-                {jokes?.map((b) =>
-                    b.show === true ? (
-                        <Joke key={b.id} jokes={b.category} />
-                    ) : null
-                )}
-            </ul>
+             
+            </div>
         </div>
-    </div>
-);
+    );
 }
-
-export default App;
