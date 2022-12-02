@@ -1,9 +1,5 @@
 function Joke({ jokes }) {
-    return (
-        <li>
-            {jokes}
-        </li>
-    );
+    return <li>{jokes.category}</li>;
 }
 
 export default Joke;

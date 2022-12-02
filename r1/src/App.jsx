@@ -25,7 +25,9 @@ return (
         <div className="App-header">
             <ul>
                 {jokes?.map((b) =>
-                    b.show === true ? <Joke key={b} jokes={b} /> : null
+                    b.show === true ? (
+                        <Joke key={b.id} jokes={b.category} />
+                    ) : null
                 )}
             </ul>
         </div>
